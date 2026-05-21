@@ -91,6 +91,3 @@ The main interactive feature is the task completion button on the dashboard. Whe
 
 The application is mobile-friendly through CSS media queries. On wide screens, task cards and summary cards appear in multi-column grids. On small screens, the layout stacks into one column, the navigation becomes vertical, and buttons become easier to tap. This should be tested in browser DevTools using a mobile viewport before submission.
 
-## Additional Information
-
-For the final video, show the application live instead of walking through code. A strong video demo should begin with a slide or text showing the required edX and GitHub usernames, then demonstrate registration or login, course creation, task creation, the dashboard filter, the no-refresh Mark Complete button, and the responsive mobile viewport. The README is intentionally detailed because the assignment emphasizes that a short or vague README can cause the project to fail.
