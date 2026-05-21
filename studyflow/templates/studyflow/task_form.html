@@ -1,0 +1,12 @@
+{% extends 'studyflow/layout.html' %}
+{% block title %}{{ heading }} | StudyFlow{% endblock %}
+{% block content %}
+<section class="form-card">
+    <h1>{{ heading }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button primary" type="submit">Save Task</button>
+    </form>
+</section>
+{% endblock %}

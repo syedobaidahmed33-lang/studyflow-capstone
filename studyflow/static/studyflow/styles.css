@@ -1,0 +1,270 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+}
+
+a {
+    color: #1d4ed8;
+    text-decoration: none;
+}
+
+.site-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.logout-form {
+    margin: 0;
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: #1d4ed8;
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+}
+
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.25rem;
+}
+
+.hero {
+    background: linear-gradient(135deg, #eef4ff, #ffffff);
+    border: 1px solid #dbeafe;
+    border-radius: 22px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.small-hero {
+    padding: 1.5rem;
+}
+
+.eyebrow {
+    color: #2563eb;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.button {
+    display: inline-block;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #111827;
+    border-radius: 12px;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.button.primary {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+}
+
+.button.secondary {
+    background: #eef2ff;
+    color: #1e3a8a;
+}
+
+.button.danger {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+.summary-grid,
+.task-grid,
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.task-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.summary-card,
+.task-card,
+.course-card,
+.form-card,
+.detail-card,
+.empty-state {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 1.25rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+}
+
+.summary-card strong {
+    display: block;
+    font-size: 2rem;
+    margin-top: 0.35rem;
+}
+
+.progress-bar {
+    margin-top: 0.75rem;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-bar div {
+    height: 100%;
+    background: #2563eb;
+    border-radius: 99px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem 0;
+}
+
+.filter-form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+select,
+input,
+textarea {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 0.65rem;
+    font: inherit;
+}
+
+.form-card,
+.detail-card {
+    max-width: 720px;
+    margin: 1rem auto;
+}
+
+.form-card p {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.course-card {
+    border-top: 6px solid #2563eb;
+}
+
+.course-pill {
+    display: inline-block;
+    border-left: 5px solid #2563eb;
+    padding: 0.3rem 0.6rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.task-meta,
+.muted {
+    color: #64748b;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.task-card.completed {
+    opacity: 0.72;
+    background: #f8fafc;
+}
+
+.messages {
+    margin-bottom: 1rem;
+}
+
+.message {
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+}
+
+@media (max-width: 760px) {
+    .navbar,
+    .hero {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .summary-grid,
+    .task-grid,
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .toolbar {
+        justify-content: stretch;
+    }
+
+    .filter-form,
+    .button,
+    .card-actions form {
+        width: 100%;
+    }
+
+    .button {
+        text-align: center;
+    }
+}

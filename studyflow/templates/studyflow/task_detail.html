@@ -1,0 +1,22 @@
+{% extends 'studyflow/layout.html' %}
+{% block title %}{{ task.title }} | StudyFlow{% endblock %}
+{% block content %}
+<article class="detail-card">
+    <p class="course-pill" style="border-color: {{ task.course.color }};">{{ task.course.name }}</p>
+    <h1>{{ task.title }}</h1>
+    <p class="task-meta">Due {{ task.due_date }} • {{ task.priority }} Priority</p>
+    <p>Status: <strong>{{ task.status }}</strong></p>
+    {% if task.description %}
+        <p>{{ task.description }}</p>
+    {% else %}
+        <p class="muted">No description was added for this task.</p>
+    {% endif %}
+    <div class="card-actions">
+        <a class="button secondary" href="{% url 'task_edit' task.id %}">Edit Task</a>
+        <form method="post" action="{% url 'task_delete' task.id %}">
+            {% csrf_token %}
+            <button class="button danger" type="submit">Delete Task</button>
+        </form>
+    </div>
+</article>
+{% endblock %}

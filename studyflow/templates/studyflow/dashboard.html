@@ -1,0 +1,70 @@
+{% extends 'studyflow/layout.html' %}
+{% block title %}Dashboard | StudyFlow{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Welcome back, {{ user.username }}</p>
+        <h1>Your study dashboard</h1>
+        <p>Track assignments, projects, and study goals before they become stressful.</p>
+    </div>
+    <a class="button primary" href="{% url 'task_create' %}">Add New Task</a>
+</section>
+
+<section class="summary-grid">
+    <article class="summary-card">
+        <span>Total Tasks</span>
+        <strong id="total-count">{{ total_tasks }}</strong>
+    </article>
+    <article class="summary-card">
+        <span>Completed</span>
+        <strong id="completed-count">{{ completed_tasks }}</strong>
+    </article>
+    <article class="summary-card">
+        <span>Progress</span>
+        <strong id="progress-percent">{{ progress_percent }}%</strong>
+        <div class="progress-bar"><div id="progress-fill" style="width: {{ progress_percent }}%;"></div></div>
+    </article>
+</section>
+
+<section class="toolbar">
+    <form method="get" class="filter-form">
+        <label for="status">Filter by status</label>
+        <select name="status" id="status" onchange="this.form.submit()">
+            <option value="">All Tasks</option>
+            {% for value, label in status_choices %}
+                <option value="{{ value }}" {% if status_filter == value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</section>
+
+<section class="task-grid">
+    {% if tasks %}
+        {% for task in tasks %}
+            <article class="task-card {% if task.status == 'Completed' %}completed{% endif %}" id="task-{{ task.id }}">
+                <div class="course-pill" style="border-color: {{ task.course.color }};">{{ task.course.name }}</div>
+                <h2><a href="{% url 'task_detail' task.id %}">{{ task.title }}</a></h2>
+                <p class="task-meta">Due {{ task.due_date }} • {{ task.priority }} Priority</p>
+                <p class="status-line">Status: <span class="status-text">{{ task.status }}</span></p>
+                {% if task.description %}
+                    <p>{{ task.description|truncatewords:22 }}</p>
+                {% else %}
+                    <p class="muted">No description added yet.</p>
+                {% endif %}
+                <div class="card-actions">
+                    <button class="button toggle-task" data-task-id="{{ task.id }}" data-url="{% url 'toggle_task_status' task.id %}">
+                        {% if task.status == 'Completed' %}Reopen{% else %}Mark Complete{% endif %}
+                    </button>
+                    <a class="button secondary" href="{% url 'task_edit' task.id %}">Edit</a>
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <div class="empty-state">
+            <h2>No tasks found</h2>
+            <p>Add your first course and task to start using StudyFlow.</p>
+            <a class="button primary" href="{% url 'course_create' %}">Create Course</a>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

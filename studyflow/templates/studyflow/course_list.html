@@ -1,0 +1,32 @@
+{% extends 'studyflow/layout.html' %}
+{% block title %}Courses | StudyFlow{% endblock %}
+{% block content %}
+<section class="hero small-hero">
+    <div>
+        <h1>Your courses</h1>
+        <p>Courses organize assignments so each task stays connected to a real class.</p>
+    </div>
+    <a class="button primary" href="{% url 'course_create' %}">Add Course</a>
+</section>
+
+<section class="course-grid">
+    {% if courses %}
+        {% for course in courses %}
+            <article class="course-card" style="border-top-color: {{ course.color }};">
+                <h2>{{ course.name }}</h2>
+                {% if course.instructor %}
+                    <p>Instructor: {{ course.instructor }}</p>
+                {% else %}
+                    <p class="muted">No instructor listed.</p>
+                {% endif %}
+                <p>{{ course.tasks.count }} task(s)</p>
+            </article>
+        {% endfor %}
+    {% else %}
+        <div class="empty-state">
+            <h2>No courses yet</h2>
+            <p>Create a course first, then add tasks to it.</p>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}
